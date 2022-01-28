@@ -1,0 +1,19 @@
+.Quiz {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 100px 15px 15px 15px;
+  width: 100%;
+  background: -webkit-linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
+  background: linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
+
+  div {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.Title {
+  color: #fff;
+  padding-bottom: 25px;
+}
