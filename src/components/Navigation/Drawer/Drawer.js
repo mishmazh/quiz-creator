@@ -35,7 +35,7 @@ class Drawer extends React.Component {
         <nav className={cls.join(" ")}>
           <ul>{this.renderLinks()}</ul>
         </nav>
-        {this.props.isOpen ? <Backdrop onClick={this.props.onClose} /> : null}
+        {this.props.isOpen ? <Backdrop onClose={this.props.onClose} /> : null}
       </>
     );
   }
