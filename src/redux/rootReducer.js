@@ -1,14 +1,4 @@
-const initialState = {
-  menu: false,
-};
+import { combineReducers } from "redux";
+import menuReducer from "./reducers/menuReducer";
 
-export default function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case "MENU_TOGGLE":
-      return { menu: !state.menu };
-    case "MENU_CLOSE":
-      return { menu: false };
-    default:
-      return state;
-  }
-}
+export default combineReducers({ menuReducer });

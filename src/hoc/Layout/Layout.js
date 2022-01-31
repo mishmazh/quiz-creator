@@ -3,6 +3,7 @@ import classes from "./Layout.module.scss";
 import MenuToggle from "../../components/Navigation/MenuToggle/MenuToggle";
 import Drawer from "../../components/Navigation/Drawer/Drawer";
 import { connect } from "react-redux";
+import { menuClose, menuToggle } from "../../redux/actions/actions";
 
 const Layout = (props) => {
   return (
@@ -17,14 +18,14 @@ const Layout = (props) => {
 
 function mapStateToProps(state) {
   return {
-    menu: state.menu,
+    menu: state.menuReducer.menu,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    menuToggleHandler: () => dispatch({ type: "MENU_TOGGLE" }),
-    menuCloseHandler: () => dispatch({ type: "MENU_CLOSE" }),
+    menuToggleHandler: () => dispatch(menuToggle()),
+    menuCloseHandler: () => dispatch(menuClose()),
   };
 }
 
