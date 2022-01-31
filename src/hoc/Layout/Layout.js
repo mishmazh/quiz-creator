@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./Layout.module.scss";
 import MenuToggle from "../../components/Navigation/MenuToggle/MenuToggle";
 import Drawer from "../../components/Navigation/Drawer/Drawer";
+import { connect } from "react-redux";
 
 const Layout = (props) => {
-  const [menu, setMenu] = useState(false);
-
-  const menuCloseHandler = () => {
-    setMenu(false);
-  };
-  const menuToggleHandler = () => {
-    setMenu(!menu);
-  };
-
   return (
     <div className={classes.Layout}>
-      <Drawer onClose={menuCloseHandler} isOpen={menu} />
-      <MenuToggle onToggle={menuToggleHandler} isOpen={menu} />
+      <MenuToggle onToggle={props.menuToggleHandler} isOpen={props.menu} />
+      <Drawer onClose={props.menuCloseHandler} isOpen={props.menu} />
 
       <main>{props.children}</main>
     </div>
   );
 };
 
-export default Layout;
+function mapStateToProps(state) {
+  return {
+    menu: state.menu,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    menuToggleHandler: () => dispatch({ type: "MENU_TOGGLE" }),
+    menuCloseHandler: () => dispatch({ type: "MENU_CLOSE" }),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

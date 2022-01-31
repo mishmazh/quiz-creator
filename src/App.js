@@ -6,8 +6,8 @@ import Auth from "./containers/Auth/Auth";
 import Quiz from "./containers/Quiz/Quiz";
 import Home from "./components/Home/Home";
 
-// --openssl-legacy-provider добавь перед start
 // yarn upgrade-interactive --latest
+// yarn add -D [package]
 const App = () => {
   return (
     <Layout>
