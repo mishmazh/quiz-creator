@@ -49,45 +49,41 @@ export function fetchQuizById(quizId) {
 
 export function quizAnswerClick(answerId) {
   return (dispatch, getState) => {
-    try {
-      const state = getState().quiz;
+    const state = getState().quiz;
 
-      if (state.answerState) {
-        // забираем нулевое значение, потому что в объекте всегда будет только один элемент
-        const key = Object.keys(state.answerState)[0];
-        if (state.answerState[key]) {
-          return;
-        }
+    if (state.answerState) {
+      // забираем нулевое значение, потому что в объекте всегда будет только один элемент
+      const key = Object.keys(state.answerState)[0];
+      if (state.answerState[key]) {
+        return;
       }
-
-      const question = state.quiz[state.activeQuestion];
-      const results = state.results;
-
-      if (question.rightAnswerId === answerId) {
-        // если по id в results ничего нет, добавляет "success"
-        if (!results[question.id]) {
-          results[question.id] = "success";
-        }
-
-        dispatch(quizSetState({ [answerId]: "success" }, results));
-      } else {
-        results[question.id] = "wrong";
-
-        dispatch(quizSetState({ [answerId]: "wrong" }, results));
-      }
-
-      const timeout = window.setTimeout(() => {
-        if (isQuizFinished(state)) {
-          dispatch(finishQuiz());
-        } else {
-          dispatch(quizNextQuestion(state.activeQuestion + 1));
-        }
-
-        window.clearTimeout(timeout);
-      }, 450);
-    } catch (e) {
-      dispatch(fetchQuizesError(e));
     }
+
+    const question = state.quiz[state.activeQuestion];
+    const results = state.results;
+
+    if (question.rightAnswerId === answerId) {
+      // если по id в results ничего нет, добавляет "success"
+      if (!results[question.id]) {
+        results[question.id] = "success";
+      }
+
+      dispatch(quizSetState({ [answerId]: "success" }, results));
+    } else {
+      results[question.id] = "wrong";
+
+      dispatch(quizSetState({ [answerId]: "wrong" }, results));
+    }
+
+    const timeout = window.setTimeout(() => {
+      if (isQuizFinished(state)) {
+        dispatch(finishQuiz());
+      } else {
+        dispatch(quizNextQuestion(state.activeQuestion + 1));
+      }
+
+      window.clearTimeout(timeout);
+    }, 450);
   };
 }
 
