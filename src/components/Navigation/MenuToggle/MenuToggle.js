@@ -1,14 +1,20 @@
 import classes from "./MenuToggle.module.scss";
+import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+import Icon from "../../UI/Icon/Icon";
 
-const MenuToggle = (props) => {
-  const cls = [classes.MenuToggle, "fa"];
+const MenuToggle = ({ isOpen, onToggle }) => {
+  const cls = [classes.menuToggle];
 
-  if (props.isOpen) {
-    cls.push("fa-times");
+  if (isOpen) {
     cls.push(classes.open);
-  } else cls.push("fa-bars");
+  }
 
-  return <i className={cls.join(" ")} onClick={props.onToggle} />;
+  return (
+    <div className={cls.join(" ")}>
+      <Icon icon={isOpen ? faTimes : faBars} onClick={onToggle} />
+    </div>
+  );
+  // return <i className={cls.join(" ")} onClick={props.onToggle} />;
 };
 
 export default MenuToggle;

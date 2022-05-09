@@ -96,28 +96,26 @@ class Auth extends React.Component {
 
   render() {
     return (
-      <div className={classes.Auth}>
-        <div>
-          <h1>Авторизация</h1>
-          <form onSubmit={this.submitHandler} className={classes.AuthForm}>
-            {this.renderControls()}
+      <div className={classes.auth}>
+        <div className={classes.title}>Авторизация</div>
+        <form onSubmit={this.submitHandler} className={classes.authForm}>
+          {this.renderControls()}
 
-            <Button
-              type="Primary"
-              onClick={this.loginHandler}
-              disabled={!this.state.isFormValid}
-            >
-              Войти
-            </Button>
-            <Button
-              type="Success"
-              onClick={this.registerHandler}
-              disabled={!this.state.isFormValid}
-            >
-              Регистрация
-            </Button>
-          </form>
-        </div>
+          <Button
+            type="primary"
+            onClick={this.loginHandler}
+            disabled={!this.state.isFormValid}
+          >
+            Войти
+          </Button>
+          <Button
+            type="success"
+            onClick={this.registerHandler}
+            disabled={!this.state.isFormValid}
+          >
+            Регистрация
+          </Button>
+        </form>
       </div>
     );
   }

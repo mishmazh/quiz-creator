@@ -8,14 +8,13 @@ import {
   validate,
   validateForm,
 } from "../../form/formFramework";
-import { Auxiliary } from "../../hoc/Auxiliary/Auxiliary";
 import { connect } from "react-redux";
 import {
   createQuizQuestion,
   finishCreateQuiz,
 } from "../../redux/actions/create";
 
-function createOptionControl(number) {
+const createOptionControl = (number) => {
   return createControl(
     {
       label: `Вариант ${number}`,
@@ -24,9 +23,9 @@ function createOptionControl(number) {
     },
     { required: true }
   );
-}
+};
 // для обнуления формы
-function createFormControls() {
+const createFormControls = () => {
   return {
     question: createControl(
       {
@@ -40,7 +39,7 @@ function createFormControls() {
     option3: createOptionControl(3),
     option4: createOptionControl(4),
   };
-}
+};
 
 class QuizCreator extends React.Component {
   state = {
@@ -73,7 +72,7 @@ class QuizCreator extends React.Component {
     return Object.keys(this.state.formControls).map((controlName, index) => {
       const control = this.state.formControls[controlName];
       return (
-        <Auxiliary key={controlName + index}>
+        <div key={controlName + index}>
           <Input
             label={control.label}
             value={control.value}
@@ -86,7 +85,7 @@ class QuizCreator extends React.Component {
             }
           />
           {index === 0 ? <hr /> : null}
-        </Auxiliary>
+        </div>
       );
     });
   }

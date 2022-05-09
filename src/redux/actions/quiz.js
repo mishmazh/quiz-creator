@@ -8,10 +8,10 @@ import {
   FINISH_QUIZ,
   QUIZ_NEXT_QUESTION,
   QUIZ_RETRY,
-} from "./actionTypes";
+} from "./types";
 
 // ---------- FETCH QUIZ-LIST ---------- //
-export function fetchQuizes() {
+export const fetchQuizes = () => {
   return async (dispatch) => {
     dispatch(fetchQuizesStart());
 
@@ -29,10 +29,10 @@ export function fetchQuizes() {
       dispatch(fetchQuizesError(e));
     }
   };
-}
+};
 
 // ---------- QUIZ ---------- //
-export function fetchQuizById(quizId) {
+export const fetchQuizById = (quizId) => {
   return async (dispatch) => {
     dispatch(fetchQuizesStart());
 
@@ -45,9 +45,9 @@ export function fetchQuizById(quizId) {
       dispatch(fetchQuizesError(e));
     }
   };
-}
+};
 
-export function quizAnswerClick(answerId) {
+export const quizAnswerClick = (answerId) => {
   return (dispatch, getState) => {
     const state = getState().quiz;
 
@@ -85,64 +85,45 @@ export function quizAnswerClick(answerId) {
       window.clearTimeout(timeout);
     }, 450);
   };
-}
+};
 
 // ---------- FETCH QUIZ-LIST ACTIONS ---------- //
-export function fetchQuizesStart() {
-  return {
-    type: FETCH_QUIZES_START,
-  };
-}
+export const fetchQuizesStart = () => ({
+  type: FETCH_QUIZES_START,
+});
 
-export function fetchQuizesSuccess(quizes) {
-  return {
-    type: FETCH_QUIZES_SUCCESS,
-    quizes,
-  };
-}
+export const fetchQuizesSuccess = (quizes) => ({
+  type: FETCH_QUIZES_SUCCESS,
+  quizes,
+});
 
-export function fetchQuizesError(e) {
-  return {
-    type: FETCH_QUIZES_ERROR,
-    error: e,
-  };
-}
+export const fetchQuizesError = (error) => ({
+  type: FETCH_QUIZES_ERROR,
+  error,
+});
 
 // ---------- FETCH QUIZ ACTIONS ---------- //
-export function fetchQuizSuccess(quiz) {
-  return {
-    type: FETCH_QUIZ_SUCCESS,
-    quiz,
-  };
-}
+export const fetchQuizSuccess = (quiz) => ({
+  type: FETCH_QUIZ_SUCCESS,
+  quiz,
+});
 
-export function quizSetState(answerState, results) {
-  return {
-    type: QUIZ_SET_STATE,
-    answerState,
-    results,
-  };
-}
+export const quizSetState = (answerState, results) => ({
+  type: QUIZ_SET_STATE,
+  answerState,
+  results,
+});
 
-export function finishQuiz() {
-  return {
-    type: FINISH_QUIZ,
-  };
-}
+export const finishQuiz = () => ({ type: FINISH_QUIZ });
 
-export function quizNextQuestion(number) {
-  return {
-    type: QUIZ_NEXT_QUESTION,
-    number,
-  };
-}
+export const quizNextQuestion = (number) => ({
+  type: QUIZ_NEXT_QUESTION,
+  number,
+});
 
-function isQuizFinished(state) {
-  return state.activeQuestion + 1 === state.quiz.length;
-}
+const isQuizFinished = (state) =>
+  state.activeQuestion + 1 === state.quiz.length;
 
-export function retryQuiz() {
-  return {
-    type: QUIZ_RETRY,
-  };
-}
+export const retryQuiz = () => ({
+  type: QUIZ_RETRY,
+});

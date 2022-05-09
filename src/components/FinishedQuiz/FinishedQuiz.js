@@ -1,12 +1,15 @@
 import classes from "./FinishedQuiz.module.scss";
 import Button from "../UI/Button/Button";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const FinishedQuiz = (props) => {
-  const successCount = Object.keys(props.results).reduce((total, key) => {
-    if (props.results[key] === "success") {
+const FinishedQuiz = ({ results, quiz, onRetry }) => {
+  const successCount = Object.keys(results).reduce((total, key) => {
+    if (results[key] === "success") {
       total++;
     }
+
     return total;
   }, 0);
 
@@ -14,27 +17,27 @@ const FinishedQuiz = (props) => {
     <div className={classes.FinishedQuiz}>
       <h1>Результаты:</h1>
       <ul>
-        {props.quiz.map((quizItem, index) => {
+        {quiz.map((quizItem, index) => {
           const cls = [
-            "fa",
-            props.results[quizItem.id] === "wrong" ? "fa-times" : "fa-check",
-            classes[props.results[quizItem.id]],
+            results[quizItem.id] === "wrong" ? { faTimes } : { faCheck },
+            classes[results[quizItem.id]],
           ];
 
           return (
             <li key={index}>
               <strong>{index + 1}</strong>.&nbsp; {quizItem.question}
-              <i className={cls.join(" ")} />
+              <FontAwesomeIcon icon={cls.join(" ")} />
+              {/* <i className={cls.join(" ")} /> */}
             </li>
           );
         })}
       </ul>
 
       <p>
-        Правильных ответов: {successCount} из {props.quiz.length}
+        Правильных ответов: {successCount} из {quiz.length}
       </p>
 
-      <Button type="Primary" onClick={props.onRetry}>
+      <Button type="Primary" onClick={onRetry}>
         Повторить
       </Button>
       <Link to="/">

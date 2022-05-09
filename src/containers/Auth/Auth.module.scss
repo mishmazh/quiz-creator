@@ -1,26 +1,20 @@
-.Auth {
+.auth {
+  color: #fff;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   flex-grow: 1;
-  width: 100%;
-  padding: 100px 15px 15px 15px;
-  background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
 
-  div {
-    width: 100%;
-    max-width: 600px;
-
-    h1 {
-      color: #fff;
-      text-align: center;
-      margin-bottom: 25px;
-    }
+  .title {
+    margin-bottom: 25px;
+    font-size: 29px;
   }
-}
 
-.AuthForm {
-  background: #eee;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  padding: 15px;
+  .authForm {
+    width: 50%;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 15px;
+  }
 }

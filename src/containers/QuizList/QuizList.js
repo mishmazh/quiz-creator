@@ -1,52 +1,39 @@
 import classes from "./QuizList.module.scss";
-import React from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Loader from "../../components/UI/Loader/Loader";
-import { connect } from "react-redux";
-import { fetchQuizes } from "../../redux/actions/quiz";
+import { useSelector } from "react-redux";
+import { useActions } from "../../hooks/useActions";
 
-class QuizList extends React.Component {
-  renderQuizes() {
-    return this.props.quizes.map((quiz) => {
+const QuizList = () => {
+  const { quizes, loading } = useSelector((state) => state.quiz);
+  const { fetchQuizes } = useActions();
+
+  useEffect(() => fetchQuizes(), []);
+
+  const renderQuizes = () => {
+    return quizes.map((quiz) => {
       return (
         <li key={quiz.id}>
           <NavLink to={"/quiz/" + quiz.id}>{quiz.name}</NavLink>
         </li>
       );
     });
-  }
+  };
 
-  componentDidMount() {
-    this.props.fetchQuizes();
-  }
+  return (
+    <div className={classes.QuizList}>
+      <div>
+        <h1>Список тестов</h1>
 
-  render() {
-    return (
-      <div className={classes.QuizList}>
-        <div>
-          <h1>Список тестов</h1>
-
-          {this.props.loading && this.props.quizes.length !== 0 ? (
-            <Loader />
-          ) : (
-            <ul>{this.renderQuizes()} </ul>
-          )}
-        </div>
+        {loading && quizes.length !== 0 ? (
+          <Loader />
+        ) : (
+          <ul>{renderQuizes()} </ul>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-function mapStateToProps(state) {
-  return {
-    quizes: state.quiz.quizes,
-    loading: state.quiz.loading,
-  };
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchQuizes: () => dispatch(fetchQuizes()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuizList);
+export default QuizList;

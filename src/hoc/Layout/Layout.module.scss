@@ -1,11 +1,7 @@
 .Layout {
   display: flex;
-  flex-direction: column;
   height: 100vh;
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
+  font-family: "Montserrat", sans-serif;
+  background: -webkit-linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
+  background: linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
 }

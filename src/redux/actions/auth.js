@@ -1,13 +1,13 @@
 import axios from "axios";
-import { AUTH_LOGOUT, AUTH_SUCCESS } from "./actionTypes";
+import { AUTH_LOGOUT, AUTH_SUCCESS } from "./types";
 
-export function auth(email, password, isLogin) {
+export const auth = (values, isLogin) => {
   return async (dispatch) => {
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true,
-    };
+    // const authData = {
+    //   email,
+    //   password,
+    //   returnSecureToken: true,
+    // };
 
     let url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB1tleQYg-9jKBvmfpGmYNTiFgH0fHhcz0";
@@ -17,7 +17,7 @@ export function auth(email, password, isLogin) {
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB1tleQYg-9jKBvmfpGmYNTiFgH0fHhcz0";
     }
 
-    const response = await axios.post(url, authData);
+    const response = await axios.post(url, values);
     const data = response.data;
 
     const expirationDate = new Date(
@@ -31,24 +31,22 @@ export function auth(email, password, isLogin) {
     dispatch(authSuccess(data.idToken));
     dispatch(autoLogout(data.expiresIn));
   };
-}
+};
 
-export function authSuccess(token) {
-  return {
-    type: AUTH_SUCCESS,
-    token,
-  };
-}
+export const authSuccess = (token) => ({
+  type: AUTH_SUCCESS,
+  token,
+});
 
-export function autoLogout(time) {
+export const autoLogout = (time) => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(logout());
     }, time * 1000);
   };
-}
+};
 
-export function logout() {
+export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
   localStorage.removeItem("expirationDate");
@@ -56,11 +54,12 @@ export function logout() {
   return {
     type: AUTH_LOGOUT,
   };
-}
+};
 
-export function autoLogin() {
+export const autoLogin = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
+
     if (!token) {
       dispatch(logout());
     } else {
@@ -75,4 +74,4 @@ export function autoLogin() {
       }
     }
   };
-}
+};
