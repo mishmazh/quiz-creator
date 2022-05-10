@@ -41,8 +41,8 @@ export const fetchQuizById = (quizId) => {
       const quiz = response.data;
 
       dispatch(fetchQuizSuccess(quiz));
-    } catch (e) {
-      dispatch(fetchQuizesError(e));
+    } catch (err) {
+      dispatch(fetchQuizesError(err));
     }
   };
 };
@@ -75,17 +75,18 @@ export const quizAnswerClick = (answerId) => {
       dispatch(quizSetState({ [answerId]: "wrong" }, results));
     }
 
-    const timeout = window.setTimeout(() => {
+    setTimeout(() => {
       if (isQuizFinished(state)) {
         dispatch(finishQuiz());
       } else {
         dispatch(quizNextQuestion(state.activeQuestion + 1));
       }
-
-      window.clearTimeout(timeout);
     }, 450);
   };
 };
+
+const isQuizFinished = (state) =>
+  state.activeQuestion + 1 === state.quiz.length;
 
 // ---------- FETCH QUIZ-LIST ACTIONS ---------- //
 export const fetchQuizesStart = () => ({
@@ -120,9 +121,6 @@ export const quizNextQuestion = (number) => ({
   type: QUIZ_NEXT_QUESTION,
   number,
 });
-
-const isQuizFinished = (state) =>
-  state.activeQuestion + 1 === state.quiz.length;
 
 export const retryQuiz = () => ({
   type: QUIZ_RETRY,

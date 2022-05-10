@@ -9,11 +9,19 @@
   border-radius: 4px;
   padding: 0 15px 15px 15px;
 
-  input {
+  button {
     margin-top: 15px;
   }
 
-  button {
-    margin-top: 15px;
+  .link {
+    font-size: 13px;
+    text-align: center;
+    padding-top: 35px;
+    transition-duration: 0.1s;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }

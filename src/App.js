@@ -22,11 +22,9 @@ const App = () => {
 
   let routes = (
     <Routes>
-      <Route path="/" element={<Auth />} />
+      <Route path="*" element={<Auth />} />
       <Route path="/quiz/:id" element={<Quiz />} />
       <Route path="/quiz-list" element={<QuizList />} />
-      {/*<Route path="/" element={} />*/}
-      {/*<Navigate to="/" />*/}
     </Routes>
   );
 
@@ -38,6 +36,7 @@ const App = () => {
         <Route path="/quiz-list" element={<QuizList />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<Navigate to="/quiz-creator" />} />
+        <Route path="/register" element={<Navigate to="/quiz-creator" />} />
       </Routes>
     );
   }

@@ -1,14 +1,15 @@
-import classes from "./AuthForm.module.scss";
+import classes from "./AuthForms.module.scss";
 import FormInput from "../../UI/FormInput/FormInput";
 import Button from "../../UI/Button/Button";
 import { Form, Formik } from "formik";
+import TextError from "../../UI/TextError/TextError";
+import { NavLink } from "react-router-dom";
 
-const AuthForm = ({
+const RegisterForm = ({
   initialValues,
   validationSchema,
-  loginHandler,
-  registerHandler,
   onSubmit,
+  errorMessage,
 }) => {
   return (
     <Formik
@@ -19,24 +20,30 @@ const AuthForm = ({
       {({ status, isSubmitting }) => {
         return (
           <>
-            <div className={classes.title}>Авторизация</div>
+            <div className={classes.title}>Регистрация</div>
             <Form className={classes.authForm}>
               <FormInput
                 type="email"
                 name="email"
+                label="Email"
                 placeholder="Введите Email..."
               />
               <FormInput
                 type="password"
                 name="password"
+                label="Пароль"
                 placeholder="Введите пароль..."
               />
+
+              {errorMessage && <TextError>Что-то пошло не так</TextError>}
+
               <Button type="submit" classType="primary">
-                Войти
-              </Button>
-              <Button type="submit" classType="success">
                 Зарегистрироваться
               </Button>
+
+              <NavLink className={classes.link} to="/">
+                Уже есть учетная запись?
+              </NavLink>
             </Form>
           </>
         );
@@ -45,4 +52,4 @@ const AuthForm = ({
   );
 };
 
-export default AuthForm;
+export default RegisterForm;
