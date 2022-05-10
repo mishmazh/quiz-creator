@@ -20,9 +20,9 @@ const Quiz = () => {
   }, []);
 
   return (
-    <div className={classes.Quiz}>
-      <div>
-        <h1 className={classes.Title}>Ответьте на все вопросы</h1>
+    <div className={classes.quiz}>
+      <div className={classes.quizForm}>
+        <h1 className={classes.title}>Ответьте на все вопросы</h1>
 
         {loading || !quiz ? (
           <Loader />

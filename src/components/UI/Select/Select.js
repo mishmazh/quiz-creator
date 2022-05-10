@@ -1,14 +1,14 @@
 import classes from "./Select.module.scss";
 
-const Select = (props) => {
-  const htmlFor = `${props.label}-${Math.random()}`;
+const Select = ({label, options, ...props}) => {
+  const htmlFor = `${label}-${Math.random()}`;
 
   return (
     <div className={classes.Select}>
-      <label htmlFor={htmlFor}>{props.label}</label>
+      <label htmlFor={htmlFor}>{label}</label>
 
-      <select value={props.value} onChange={props.onChange} id={htmlFor}>
-        {props.options.map((option, index) => {
+      <select id={htmlFor} {...props}>
+        {options.map((option, index) => {
           return (
             <option value={option.value} key={option.value + index}>
               {option.text}

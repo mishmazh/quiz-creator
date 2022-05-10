@@ -15,7 +15,7 @@ const FinishedQuiz = ({ results, quiz, onRetry }) => {
 
   return (
     <div className={classes.FinishedQuiz}>
-      <h1>Результаты:</h1>
+      <div className={classes.title}>Результаты:</div>
       <ul>
         {quiz.map((quizItem, index) => {
           const cls = [
@@ -33,15 +33,15 @@ const FinishedQuiz = ({ results, quiz, onRetry }) => {
         })}
       </ul>
 
-      <p>
+      <div className={classes.successCount}>
         Правильных ответов: {successCount} из {quiz.length}
-      </p>
+      </div>
 
-      <Button type="Primary" onClick={onRetry}>
+      <Button classType="primary" onClick={onRetry}>
         Повторить
       </Button>
       <Link to="/">
-        <Button type="Success">Вернуться на домашнюю страницу</Button>
+        <Button classType="success">Вернуться на домашнюю страницу</Button>
       </Link>
     </div>
   );

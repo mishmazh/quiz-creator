@@ -1,22 +1,22 @@
 import AnswersList from "./AnswersList/AnswersList";
 import styles from "./ActiveQuiz.module.scss";
 
-const ActiveQuiz = (props) => {
+const ActiveQuiz = ({answerNumber, question, quizLength, answers, onAnswerClick, answerState}) => {
   return (
-    <div className={styles.ActiveQuiz}>
-      <p className={styles.Question}>
-        <span>
-          <strong>{props.answerNumber}.</strong>&nbsp; {props.question}
-        </span>
+    <div className={styles.activeQuiz}>
+      <div className={styles.questionBlock}>
+        <div>
+          <strong>{answerNumber}.</strong>&nbsp; {question}
+        </div>
         <small>
-          {props.answerNumber} из {props.quizLength}
+          {answerNumber} из {quizLength}
         </small>
-      </p>
+      </div>
 
       <AnswersList
-        answers={props.answers}
-        onAnswerClick={props.onAnswerClick}
-        answerState={props.answerState}
+        answers={answers}
+        onAnswerClick={onAnswerClick}
+        answerState={answerState}
       />
     </div>
   );
