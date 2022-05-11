@@ -1,6 +1,6 @@
 import classes from "./Select.module.scss";
 
-const Select = ({label, options, ...props}) => {
+const Select = ({ label, options, ...props }) => {
   const htmlFor = `${label}-${Math.random()}`;
 
   return (

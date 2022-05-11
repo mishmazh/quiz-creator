@@ -1,14 +1,14 @@
 import is from "is_js";
 
-export function createControl(config, validation) {
-  return {
-    ...config,
-    validation,
-    valid: !validation,
-    touched: false,
-    value: "",
-  };
-}
+// export function createControl(config, validation) {
+//   return {
+//     ...config,
+//     validation,
+//     valid: !validation,
+//     touched: false,
+//     value: "",
+//   };
+// }
 
 export function validate(value, validation = null) {
   if (!validation) {
