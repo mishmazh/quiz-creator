@@ -1,10 +1,9 @@
 import classes from "./FinishedQuiz.module.scss";
-import Button from "../UI/Button/Button";
-import { Link } from "react-router-dom";
+import Button from "../../UI/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const FinishedQuiz = ({ results, quiz, onRetry }) => {
+const FinishedQuiz = ({ results, quiz, retryHandler, redirectHandler }) => {
   const successCount = Object.keys(results).reduce((total, key) => {
     if (results[key] === "success") {
       total++;
@@ -27,7 +26,6 @@ const FinishedQuiz = ({ results, quiz, onRetry }) => {
             <li key={index}>
               <strong>{index + 1}</strong>.&nbsp; {quizItem.question}
               <FontAwesomeIcon icon={cls.join(" ")} />
-              {/* <i className={cls.join(" ")} /> */}
             </li>
           );
         })}
@@ -37,12 +35,12 @@ const FinishedQuiz = ({ results, quiz, onRetry }) => {
         Правильных ответов: {successCount} из {quiz.length}
       </div>
 
-      <Button classType="primary" onClick={onRetry}>
+      <Button classType="primary" onClick={retryHandler}>
         Повторить
       </Button>
-      <Link to="/">
-        <Button classType="success">Вернуться на домашнюю страницу</Button>
-      </Link>
+      <Button classType="success" onClick={redirectHandler}>
+        Вернуться на домашнюю страницу
+      </Button>
     </div>
   );
 };

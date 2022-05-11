@@ -1,0 +1,10 @@
+.quizListItem {
+  margin-bottom: 9px;
+  font-size: 16px;
+  transition-duration: 0.22s;
+  transition: opacity 0.22s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

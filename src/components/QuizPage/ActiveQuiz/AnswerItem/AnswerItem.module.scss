@@ -1,9 +1,11 @@
 .AnswerItem {
   border: solid 1px #fff;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 4px;
+  padding: 6px 10px;
   margin-bottom: 5px;
   cursor: pointer;
+  list-style: none;
+  font-size: 0.9em;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);

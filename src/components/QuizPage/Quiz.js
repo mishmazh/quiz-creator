@@ -1,23 +1,26 @@
 import { useEffect } from "react";
 import classes from "./Quiz.module.scss";
-import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
-import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
-import Loader from "../../components/UI/Loader/Loader";
+import ActiveQuiz from "./ActiveQuiz/ActiveQuiz";
+import FinishedQuiz from "./FinishedQuiz/FinishedQuiz";
+import Loader from "../UI/Loader/Loader";
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useActions";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Quiz = () => {
   const { results, answerState, activeQuestion, isFinished, quiz, loading } =
     useSelector((state) => state.quiz);
   const { fetchQuizById, retryQuiz, quizAnswerClick } = useActions();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchQuizById(id);
 
     return () => retryQuiz();
   }, []);
+
+  const navigateToStart = () => navigate("/quiz-creator");
 
   return (
     <div className={classes.quiz}>
@@ -27,7 +30,12 @@ const Quiz = () => {
         {loading || !quiz ? (
           <Loader />
         ) : isFinished ? (
-          <FinishedQuiz results={results} quiz={quiz} onRetry={retryQuiz} />
+          <FinishedQuiz
+            results={results}
+            quiz={quiz}
+            retryHandler={retryQuiz}
+            redirectHandler={navigateToStart}
+          />
         ) : (
           <ActiveQuiz
             question={quiz[activeQuestion].question}
