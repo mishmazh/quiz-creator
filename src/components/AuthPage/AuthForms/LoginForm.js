@@ -17,7 +17,7 @@ const LoginForm = ({
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ status, isSubmitting }) => {
+      {({ isSubmitting }) => {
         return (
           <>
             <div className={classes.title}>Авторизация</div>
@@ -35,10 +35,10 @@ const LoginForm = ({
                 placeholder="Введите пароль..."
               />
 
-              {errorMessage && <TextError>Что-то пошло не так</TextError>}
+              {errorMessage && <TextError>{errorMessage}</TextError>}
 
-              <Button type="submit" classType="primary">
-                Войти
+              <Button type="submit" classType="primary" disabled={isSubmitting}>
+                {isSubmitting ? "Загрузка..." : "Войти"}
               </Button>
               <Button
                 type="button"

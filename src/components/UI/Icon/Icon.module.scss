@@ -1,10 +1,14 @@
-.icon {
-  font-size: 29px;
+.defaultIcon {
+  font-size: 23px;
   cursor: pointer;
   transition: 0.2s;
-  color: #fff;
 
   &:hover {
     opacity: 0.5;
   }
+}
+
+.quizIcon {
+  font-size: 1.2em;
+  margin-left: 0.6em;
 }

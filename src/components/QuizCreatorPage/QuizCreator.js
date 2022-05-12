@@ -1,143 +1,143 @@
-// import classes from "./QuizCreator.module.scss";
-// import React, { useState } from "react";
-// import FormInput from "../UI/FormInput/FormInput";
-// // import Select from "../UI/Select/Select";
-// import Button from "../UI/Button/Button";
-// import { createControl } from "../../form/formFramework";
-// import { useActions } from "../../hooks/useActions";
-// import { useSelector } from "react-redux";
-// import * as Yup from "yup";
-// import { Form, Formik } from "formik";
+import classes from "./QuizCreator.module.scss";
+import React, { useState } from "react";
+import Input from "../../components/UI/Input/Input";
+import Select from "../../components/UI/Select/Select";
+import Button from "../../components/UI/Button/Button";
+import { useSelector } from "react-redux";
+import { useActions } from "../../hooks/useActions";
+import {
+  createQuizBtnDisabled,
+  createFormControls,
+} from "../../helpers/createQuizHelpers";
+import Delimiter from "../../components/UI/Delimiter/Delimiter";
 
-// const createOptionControl = (number) => {
-//   return createControl({
-//     label: `Вариант ${number}`,
-//     id: number,
-//   });
-// };
+const QuizCreator = () => {
+  const [state, setState] = useState({
+    rightAnswerId: 1,
+    formControls: createFormControls(),
+  });
+  const { quiz } = useSelector((state) => state.create);
+  const { createQuizQuestion, finishCreateQuiz } = useActions();
 
-// const createFormControls = () => {
-//   return {
-//     question: createControl({
-//       label: "Введите вопрос",
-//     }),
-//     option1: createOptionControl(1),
-//     option2: createOptionControl(2),
-//     option3: createOptionControl(3),
-//     option4: createOptionControl(4),
-//   };
-// };
+  const submitHandler = (event) => {
+    event.preventDefault();
+  };
 
-// const QuizCreator = () => {
-//   const { quiz } = useSelector((state) => state.create);
-//   const { createQuizQuestion, finishCreateQuiz } = useActions();
+  const controlOnChangeHandler = (value, controlName) => {
+    const formControls = { ...state.formControls };
+    const control = { ...formControls[controlName] };
 
-//   const [state, setState] = useState({
-//     rightAnswerId: 1,
-//     formControls: createFormControls(),
-//   });
+    control.value = value;
 
-//   const initialValues = {
-//     control: "",
-//   };
+    formControls[controlName] = control;
 
-//   const validationSchema = Yup.object({
-//     control: Yup.string().required(""),
-//   });
+    setState({
+      ...state,
+      formControls,
+    });
+  };
 
-//   const onChangeHandler = (value, controlName) => {
-//     const formControls = { ...state.formControls };
-//     const control = { ...formControls[controlName] };
+  const renderControls = () =>
+    Object.keys(state.formControls).map((controlName, index) => {
+      const control = state.formControls[controlName];
 
-//     control.value = value;
+      return (
+        <div key={controlName + index}>
+          <Input
+            type="text"
+            label={control.label}
+            value={control.value}
+            placeholder={
+              index === 0 ? "Введите вопрос..." : "Введите вариант ответа..."
+            }
+            onChange={(event) =>
+              controlOnChangeHandler(event.target.value, controlName)
+            }
+          />
+          {index === 0 && <Delimiter width="50" />}
+        </div>
+      );
+    });
 
-//     formControls[controlName] = control;
+  const selectOnChangeHandler = (event) => {
+    setState({ ...state, rightAnswerId: +event.target.value });
+  };
 
-//     setState({
-//       formControls,
-//     });
-//   };
+  const renderSelect = (
+    <Select
+      label="Выберите правильный ответ"
+      value={state.rightAnswerId}
+      onChange={selectOnChangeHandler}
+      options={[
+        { text: 1, value: 1 },
+        { text: 2, value: 2 },
+        { text: 3, value: 3 },
+        { text: 4, value: 4 },
+      ]}
+    />
+  );
 
-//   const renderControls = () =>
-//     Object.keys(state.formControls).map((controlName, index) => {
-//       const control = state.formControls[controlName];
+  const addQuestionHandler = (event) => {
+    event.preventDefault();
 
-//       return (
-//         <div key={controlName + index}>
-//           <FormInput
-//             label={control.label}
-//             value={control.value}
-//             name="control"
-//             type="text"
-//             placeholder="Введите вопрос..."
-//             onChange={(e) => onChangeHandler(e.target.value, controlName)}
-//           />
-//           {index === 0 && <hr />}
-//         </div>
-//       );
-//     });
+    const { question, option1, option2, option3, option4 } = state.formControls;
 
-//   const addQuestionHandler = () => {
-//     const { question, option1, option2, option3, option4 } = state.formControls;
+    const questionItem = {
+      question: question.value,
+      rightAnswerId: state.rightAnswerId,
+      answers: [
+        { text: option1.value, id: option1.id },
+        { text: option2.value, id: option2.id },
+        { text: option3.value, id: option3.id },
+        { text: option4.value, id: option4.id },
+      ],
+      id: quiz.length + 1,
+    };
 
-//     const questionItem = {
-//       question: question.value,
-//       rightAnswerId: state.rightAnswerId,
-//       answers: [
-//         { text: option1.value, id: option1.id },
-//         { text: option2.value, id: option2.id },
-//         { text: option3.value, id: option3.id },
-//         { text: option4.value, id: option4.id },
-//       ],
-//       id: quiz.length + 1,
-//     };
+    createQuizQuestion(questionItem);
 
-//     createQuizQuestion(questionItem);
+    setState({
+      rightAnswerId: 1,
+      formControls: createFormControls(),
+    });
+  };
 
-//     setState({
-//       rightAnswerId: 1,
-//       formControls: createFormControls(),
-//     });
-//   };
+  const createQuizHandler = (event) => {
+    event.preventDefault();
 
-//   const createQuizHandler = () => {
-//     setState({
-//       rightAnswerId: 1,
-//       formControls: createFormControls(),
-//     });
+    setState({
+      rightAnswerId: 1,
+      formControls: createFormControls(),
+    });
 
-//     finishCreateQuiz();
-//   };
+    finishCreateQuiz();
+  };
 
-//   return (
-//     <Formik
-//       initialValues={initialValues}
-//       validationSchema={validationSchema}
-//       onSubmit={addQuestionHandler}
-//     >
-//       <div className={classes.quizCreator}>
-//         <div>
-//           <h1>Создание теста</h1>
+  return (
+    <div className={classes.quizCreator}>
+      <div className={classes.title}>Создание теста</div>
 
-//           <Form className={classes.quizCreatorForm}>
-//             {renderControls()}
+      <form className={classes.quizCreatorForm} onSubmit={submitHandler}>
+        {renderControls()}
+        {renderSelect}
 
-//             <Button classType="primary" type="submit">
-//               Добавить вопрос
-//             </Button>
-//           </Form>
+        <Button
+          classType="primary"
+          onClick={addQuestionHandler}
+          disabled={!createQuizBtnDisabled(state.formControls)}
+        >
+          Добавить вопрос
+        </Button>
+        <Button
+          classType="success"
+          onClick={createQuizHandler}
+          disabled={quiz.length === 0}
+        >
+          Создать тест
+        </Button>
+      </form>
+    </div>
+  );
+};
 
-//           <Button
-//             type="success"
-//             onClick={createQuizHandler}
-//             disabled={quiz.length === 0}
-//           >
-//             Создать тест
-//           </Button>
-//         </div>
-//       </div>
-//     </Formik>
-//   );
-// };
-
-// export default QuizCreator;
+export default QuizCreator;

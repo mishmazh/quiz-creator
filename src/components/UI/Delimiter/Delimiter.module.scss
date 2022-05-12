@@ -1,0 +1,12 @@
+.delimiter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+
+  .line {
+    border: 1px solid #ddddda;
+    border-radius: 5px;
+    width: 10%;
+  }
+}

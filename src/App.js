@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "./hoc/Layout/Layout";
 import { Navigate, Route, Routes } from "react-router-dom";
-import QuizCreator from "./containers/QuizCreator/QuizCreator";
+import QuizCreator from "./components/QuizCreatorPage/QuizCreator";
 import QuizList from "./components/QuizListPage/QuizList";
 import Auth from "./components/AuthPage/Auth";
 import Quiz from "./components/QuizPage/Quiz";
@@ -25,6 +25,7 @@ const App = () => {
       <Route path="*" element={<Auth />} />
       <Route path="/quiz/:id" element={<Quiz />} />
       <Route path="/quiz-list" element={<QuizList />} />
+      <Route path="/quiz-creator" element={<Navigate to="/" />} />
     </Routes>
   );
 

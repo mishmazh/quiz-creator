@@ -3,12 +3,6 @@ import { AUTH_FETCH_ERROR, AUTH_LOGOUT, AUTH_SUCCESS } from "./types";
 
 export const auth = (values, isLogin) => {
   return async (dispatch) => {
-    // const authData = {
-    //   email,
-    //   password,
-    //   returnSecureToken: true,
-    // };
-
     let url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB1tleQYg-9jKBvmfpGmYNTiFgH0fHhcz0";
 
@@ -32,7 +26,8 @@ export const auth = (values, isLogin) => {
       dispatch(authSuccess(data.idToken));
       dispatch(autoLogout(data.expiresIn));
     } catch (err) {
-      dispatch(authFetchError(err));
+      dispatch(authFetchError(err.message));
+      setTimeout(() => dispatch(authFetchError("")), 2500);
     }
   };
 };

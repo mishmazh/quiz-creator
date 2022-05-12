@@ -1,8 +1,12 @@
 import classes from "./Icon.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Icon = ({ icon, ...props }) => (
-  <FontAwesomeIcon className={classes.icon} icon={icon} {...props} />
+const Icon = ({ classType, icon, ...props }) => (
+  <FontAwesomeIcon
+    className={classes[classType] || classes.defaultIcon}
+    icon={icon}
+    {...props}
+  />
 );
 
 export default Icon;

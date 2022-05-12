@@ -16,7 +16,7 @@ const Drawer = ({ onClose, isOpen, isAuth }) => {
     });
   };
 
-  const cls = [classes.Drawer];
+  const cls = [classes.drawer];
 
   if (!isOpen) {
     cls.push(classes.close);

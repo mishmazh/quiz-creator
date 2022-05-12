@@ -1,7 +1,7 @@
 import classes from "./FinishedQuiz.module.scss";
 import Button from "../../UI/Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
+import Icon from "../../UI/Icon/Icon";
 
 const FinishedQuiz = ({ results, quiz, retryHandler, redirectHandler }) => {
   const successCount = Object.keys(results).reduce((total, key) => {
@@ -13,22 +13,18 @@ const FinishedQuiz = ({ results, quiz, retryHandler, redirectHandler }) => {
   }, 0);
 
   return (
-    <div className={classes.FinishedQuiz}>
+    <div className={classes.finishedQuiz}>
       <div className={classes.title}>Результаты:</div>
       <ul>
-        {quiz.map((quizItem, index) => {
-          const cls = [
-            results[quizItem.id] === "wrong" ? { faTimes } : { faCheck },
-            classes[results[quizItem.id]],
-          ];
-
-          return (
-            <li key={index}>
-              <strong>{index + 1}</strong>.&nbsp; {quizItem.question}
-              <FontAwesomeIcon icon={cls.join(" ")} />
-            </li>
-          );
-        })}
+        {quiz.map((quizItem, index) => (
+          <li className={classes.resultsList} key={index}>
+            {index + 1}.&nbsp; {quizItem.question}
+            <Icon
+              classType="quizIcon"
+              icon={results[quizItem.id] === "wrong" ? faTimes : faCheck}
+            />
+          </li>
+        ))}
       </ul>
 
       <div className={classes.successCount}>

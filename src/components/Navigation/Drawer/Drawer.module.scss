@@ -1,4 +1,4 @@
-.Drawer {
+.drawer {
   position: fixed;
   left: 0;
   top: 0;
@@ -6,6 +6,7 @@
   height: 100%;
   padding: 20px 10px;
   background: #000;
+  opacity: 0.9;
   transform: translateX(0px);
   transition: transform 0.22s ease-in;
   z-index: 20;

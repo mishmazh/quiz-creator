@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./Layout.module.scss";
 import MenuToggle from "../../components/Navigation/MenuToggle/MenuToggle";
 import Drawer from "../../components/Navigation/Drawer/Drawer";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
   const [menu, setMenu] = useState(false);
@@ -17,11 +17,5 @@ const Layout = ({ children }) => {
     </div>
   );
 };
-
-// function mapStateToProps(state) {
-//   return {
-//     isAuth: state.auth.token,
-//   };
-// }
 
 export default Layout;

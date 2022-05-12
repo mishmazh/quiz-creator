@@ -17,7 +17,7 @@ const RegisterForm = ({
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ status, isSubmitting }) => {
+      {({ isSubmitting }) => {
         return (
           <>
             <div className={classes.title}>Регистрация</div>
@@ -35,10 +35,10 @@ const RegisterForm = ({
                 placeholder="Введите пароль..."
               />
 
-              {errorMessage && <TextError>Что-то пошло не так</TextError>}
+              {errorMessage && <TextError>{errorMessage}</TextError>}
 
-              <Button type="submit" classType="primary">
-                Зарегистрироваться
+              <Button type="submit" classType="primary" disabled={isSubmitting}>
+                {isSubmitting ? "Загрузка..." : "Зарегистрироваться"}
               </Button>
 
               <NavLink className={classes.link} to="/">

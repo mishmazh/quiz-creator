@@ -1,27 +1,28 @@
-.FinishedQuiz {
+.finishedQuiz {
   border: solid 2px #fff;
   border-radius: 4px;
   padding: 20px;
 
   ul {
-    list-style: none;
     margin-left: 3px;
+
+    .resultsList {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+    }
   }
 
   .title {
     font-size: 1.5em;
-    padding-bottom: 10px;
+    padding-bottom: 1em;
   }
 
   .successCount {
-    padding: 1em 0;
+    padding: 1.3em 0;
   }
-}
 
-.success {
-  color: rgba(161, 240, 69, 0.7);
-}
-
-.wrong {
-  color: rgba(240, 87, 108, 0.7);
+  button {
+    color: #fff;
+  }
 }

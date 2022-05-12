@@ -14,7 +14,6 @@ const MenuToggle = ({ isOpen, onToggle }) => {
       <Icon icon={isOpen ? faTimes : faBars} onClick={onToggle} />
     </div>
   );
-  // return <i className={cls.join(" ")} onClick={props.onToggle} />;
 };
 
 export default MenuToggle;
