@@ -54,6 +54,7 @@ export const quizAnswerClick = (answerId) => {
     if (state.answerState) {
       // забираем нулевое значение, потому что в объекте всегда будет только один элемент
       const key = Object.keys(state.answerState)[0];
+
       if (state.answerState[key]) {
         return;
       }

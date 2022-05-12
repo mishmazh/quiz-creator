@@ -42,7 +42,7 @@ const Quiz = () => {
             answers={quiz[activeQuestion].answers}
             quizLength={quiz.length}
             answerNumber={activeQuestion + 1}
-            onAnswerClick={quizAnswerClick}
+            onAnswerClickHandler={quizAnswerClick}
             answerState={answerState}
           />
         )}

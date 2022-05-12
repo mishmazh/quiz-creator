@@ -32,11 +32,11 @@ const createFormControls = () => ({
 });
 
 const QuizCreator = () => {
-  debugger;
   const [state, setState] = useState({
     rightAnswerId: 1,
     formControls: createFormControls(),
   });
+  // const [rightAnswer, setRightAnswer] = useState(1)
   const { quiz } = useSelector((state) => state.create);
   const { createQuizQuestion, finishCreateQuiz } = useActions();
 
@@ -53,6 +53,7 @@ const QuizCreator = () => {
     formControls[controlName] = control;
 
     setState({
+      ...state,
       formControls,
     });
   };
@@ -86,6 +87,7 @@ const QuizCreator = () => {
     const questionItem = {
       question: question.value,
       rightAnswerId: state.rightAnswerId,
+      // rightAnswerId: rightAnswer,
       answers: [
         { text: option1.value, id: option1.id },
         { text: option2.value, id: option2.id },
@@ -118,10 +120,11 @@ const QuizCreator = () => {
     setState({ ...state, rightAnswerId: +event.target.value });
   };
 
-  const select = (
+  const renderSelect = (
     <Select
       label="Выберите правильный ответ"
       value={state.rightAnswerId}
+      //   value={rightAnswer}
       onChange={selectOnChangeHandler}
       options={[
         { text: 1, value: 1 },
@@ -138,7 +141,7 @@ const QuizCreator = () => {
 
       <form className={classes.quizCreatorForm} onSubmit={submitHandler}>
         {renderControls()}
-        {select}
+        {renderSelect}
 
         <Button classType="primary" onClick={addQuestionHandler}>
           Добавить вопрос
@@ -162,7 +165,7 @@ export default QuizCreator;
 //   value: "",
 //   id: number,
 // });
-
+//
 // const createFormControls = () => ({
 //   question: {
 //     label: "Введите вопрос",
@@ -173,34 +176,34 @@ export default QuizCreator;
 //   option3: createOptionControl(3),
 //   option4: createOptionControl(4),
 // });
-
+//
 // class QuizCreator extends React.Component {
 //   state = {
 //     rightAnswerId: 1,
 //     formControls: createFormControls(),
 //   };
-
+//
 //   submitHandler = (event) => {
 //     event.preventDefault();
 //   };
-
+//
 //   onChangeHandler = (value, controlName) => {
 //     const formControls = { ...this.state.formControls };
 //     const control = { ...formControls[controlName] };
-
+//
 //     control.value = value;
-
+//
 //     formControls[controlName] = control;
-
+//
 //     this.setState({
 //       formControls,
 //     });
 //   };
-
+//
 //   renderControls = () =>
 //     Object.keys(this.state.formControls).map((controlName, index) => {
 //       const control = this.state.formControls[controlName];
-
+//
 //       return (
 //         <div key={controlName + index}>
 //           <Input
@@ -215,13 +218,13 @@ export default QuizCreator;
 //         </div>
 //       );
 //     });
-
+//
 //   addQuestionHandler = (event) => {
 //     event.preventDefault();
-
+//
 //     const { question, option1, option2, option3, option4 } =
 //       this.state.formControls;
-
+//
 //     const questionItem = {
 //       question: question.value,
 //       rightAnswerId: this.state.rightAnswerId,
@@ -233,32 +236,32 @@ export default QuizCreator;
 //       ],
 //       id: this.props.quiz.length + 1,
 //     };
-
+//
 //     this.props.createQuizQuestion(questionItem);
-
+//
 //     this.setState({
 //       rightAnswerId: 1,
 //       formControls: createFormControls(),
 //     });
 //   };
-
+//
 //   createQuizHandler = (event) => {
 //     event.preventDefault();
-
+//
 //     this.setState({
 //       rightAnswerId: 1,
 //       formControls: createFormControls(),
 //     });
-
+//
 //     this.props.finishCreateQuiz();
 //   };
-
+//
 //   selectOnChangeHandler = (event) => {
 //     this.setState({
 //       rightAnswerId: +event.target.value,
 //     });
 //   };
-
+//
 //   render() {
 //     const select = (
 //       <Select
@@ -273,15 +276,15 @@ export default QuizCreator;
 //         ]}
 //       />
 //     );
-
+//
 //     return (
 //       <div className={classes.quizCreator}>
 //         <div className={classes.title}>Создание теста</div>
-
+//
 //         <form className={classes.quizCreatorForm} onSubmit={this.submitHandler}>
 //           {this.renderControls()}
 //           {select}
-
+//
 //           <Button classType="primary" onClick={this.addQuestionHandler}>
 //             Добавить вопрос
 //           </Button>
@@ -297,20 +300,20 @@ export default QuizCreator;
 //     );
 //   }
 // }
-
+//
 // function mapStateToProps(state) {
 //   return {
 //     quiz: state.create.quiz,
 //   };
 // }
-
+//
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     createQuizQuestion: (item) => dispatch(createQuizQuestion(item)),
 //     finishCreateQuiz: () => dispatch(finishCreateQuiz()),
 //   };
 // }
-
+//
 // export default connect(mapStateToProps, mapDispatchToProps)(QuizCreator);
 
 // const createOptionControl = (number) => {
@@ -491,30 +494,3 @@ export default QuizCreator;
 // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(QuizCreator);
-
-// const createOptionControl = (number) => {
-//   return createControl(
-//     {
-//       label: `Вариант ${number}`,
-//       errorMessage: "Значение не может быть пустым",
-//       id: number,
-//     },
-//     { required: true }
-//   );
-// };
-// // для обнуления формы
-// const createFormControls = () => {
-//   return {
-//     question: createControl(
-//       {
-//         label: "Введите вопрос",
-//         errorMessage: "Вопрос не может быть пустым",
-//       },
-//       { required: true }
-//     ),
-//     option1: createOptionControl(1),
-//     option2: createOptionControl(2),
-//     option3: createOptionControl(3),
-//     option4: createOptionControl(4),
-//   };
-// };

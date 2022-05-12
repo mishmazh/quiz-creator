@@ -6,7 +6,7 @@ const ActiveQuiz = ({
   question,
   quizLength,
   answers,
-  onAnswerClick,
+  onAnswerClickHandler,
   answerState,
 }) => {
   return (
@@ -24,7 +24,7 @@ const ActiveQuiz = ({
         <AnswerItem
           key={index}
           answer={answer}
-          onAnswerClick={onAnswerClick}
+          onAnswerClickHandler={onAnswerClickHandler}
           answerState={answerState ? answerState[answer.id] : null}
         />
       ))}
