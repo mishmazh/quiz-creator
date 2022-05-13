@@ -7,7 +7,13 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 1em;
+
+    .question {
+      width: 85%;
+    }
+
+    .answerLength {
+      font-size: 13px;
+    }
   }
 }
-
-

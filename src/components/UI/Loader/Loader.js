@@ -2,8 +2,8 @@ import classes from "./Loader.module.scss";
 
 const Loader = () => {
   return (
-    <div className={classes.Center}>
-      <div className={classes.Loader}>
+    <div className={classes.center}>
+      <div className={classes.loader}>
         <div />
         <div />
       </div>

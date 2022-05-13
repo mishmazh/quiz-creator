@@ -1,4 +1,4 @@
-import axios from "../../api/api";
+import api from "../../api/api";
 import {
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZES_ERROR,
@@ -11,24 +11,27 @@ import {
 } from "./types";
 
 // ---------- FETCH QUIZ-LIST ---------- //
-export const fetchQuizes = () => {
-  return async (dispatch) => {
-    dispatch(fetchQuizesStart());
+export const fetchQuizes = () => async (dispatch) => {
+  dispatch(fetchQuizesStart());
 
-    try {
-      const response = await axios.get("/quizes.json");
+  try {
+    const response = await api.get("/quizes.json");
+    const quizes = [];
 
-      const quizes = [];
+    Object.keys(response.data).forEach((key, index) => {
+      quizes.push({ id: key, name: `Тест №${index + 1}` });
+    });
 
-      Object.keys(response.data).forEach((key, index) => {
-        quizes.push({ id: key, name: `Тест №${index + 1}` });
-      });
+    dispatch(fetchQuizesSuccess(quizes));
+  } catch (err) {
+    dispatch(fetchQuizesError(err));
+  }
+};
 
-      dispatch(fetchQuizesSuccess(quizes));
-    } catch (e) {
-      dispatch(fetchQuizesError(e));
-    }
-  };
+export const deleteQuizById = (quizId) => async (dispatch) => {
+  await api.delete(`/quizes/${quizId}.json`);
+
+  dispatch(fetchQuizes());
 };
 
 // ---------- QUIZ ---------- //
@@ -37,7 +40,7 @@ export const fetchQuizById = (quizId) => {
     dispatch(fetchQuizesStart());
 
     try {
-      const response = await axios.get(`/quizes/${quizId}.json`);
+      const response = await api.get(`/quizes/${quizId}.json`);
       const quiz = response.data;
 
       dispatch(fetchQuizSuccess(quiz));
@@ -89,7 +92,7 @@ export const quizAnswerClick = (answerId) => {
 const isQuizFinished = (state) =>
   state.activeQuestion + 1 === state.quiz.length;
 
-// ---------- FETCH QUIZ-LIST ACTIONS ---------- //
+// ---------- FETCH QUIZ-LIST ---------- //
 export const fetchQuizesStart = () => ({
   type: FETCH_QUIZES_START,
 });
@@ -104,7 +107,7 @@ export const fetchQuizesError = (error) => ({
   error,
 });
 
-// ---------- FETCH QUIZ ACTIONS ---------- //
+// ---------- FETCH QUIZ ---------- //
 export const fetchQuizSuccess = (quiz) => ({
   type: FETCH_QUIZ_SUCCESS,
   quiz,

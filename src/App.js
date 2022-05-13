@@ -6,7 +6,7 @@ import QuizList from "./components/QuizListPage/QuizList";
 import Auth from "./components/AuthPage/Auth";
 import Quiz from "./components/QuizPage/Quiz";
 import { useSelector } from "react-redux";
-import Logout from "./components/Logout/Logout";
+import Logout from "./components/Navigation/Logout/Logout";
 import { useActions } from "./hooks/useActions";
 import "./ResetStyles.css";
 

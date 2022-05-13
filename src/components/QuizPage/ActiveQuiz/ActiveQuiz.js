@@ -12,12 +12,12 @@ const ActiveQuiz = ({
   return (
     <div className={classes.activeQuiz}>
       <div className={classes.questionBlock}>
-        <div>
+        <div className={classes.question}>
           <strong>{answerNumber}.</strong>&nbsp; {question}
         </div>
-        <small>
+        <div className={classes.answerLength}>
           {answerNumber} из {quizLength}
-        </small>
+        </div>
       </div>
 
       {answers.map((answer, index) => (

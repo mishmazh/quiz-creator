@@ -44,6 +44,7 @@ const LoginForm = ({
                 type="button"
                 onClick={redirectHandler}
                 classType="success"
+                disabled={isSubmitting}
               >
                 Регистрация
               </Button>

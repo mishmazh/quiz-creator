@@ -6,16 +6,23 @@
   flex-grow: 1;
 
   .quizListForm {
-    width: 50%;
+    width: 100%;
+    max-width: 320px;
 
     .title {
-      font-size: 2em;
-      margin-bottom: 0.8em;
+      font-size: 2.5em;
+      margin-bottom: 1.5em;
     }
 
     .list {
       display: flex;
       flex-direction: column;
+
+      .listItem {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+      }
     }
   }
 }

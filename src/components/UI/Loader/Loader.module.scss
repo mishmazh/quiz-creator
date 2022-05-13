@@ -1,7 +1,9 @@
-.Center {
-  text-align: center;
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .Loader {
+  .loader {
     display: inline-block;
     position: relative;
     width: 80px;
@@ -14,6 +16,7 @@
       border-radius: 50%;
       animation: Loader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
     }
+
     div:nth-child(2) {
       animation-delay: -0.5s;
     }
