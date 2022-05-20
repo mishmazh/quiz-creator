@@ -20,7 +20,7 @@ const RegisterForm = ({
       {({ isSubmitting }) => {
         return (
           <>
-            <div className={classes.title}>Регистрация</div>
+            <div className={classes.title}>Registration</div>
             <Form className={classes.authForm}>
               <FormInput
                 type="email"
