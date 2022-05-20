@@ -1,11 +1,11 @@
-# Создатель тестов
+# Quiz Creator
 
-## Функционал:
-* Регистрация, авторизация с валидацией
-* Создание тестов с 4 вариантами ответов
-* Список созданных тестов
+## Functional:
+* Register, auth with validation
+* Create quizzes with 4 options to choose from
+* Quiz list
 
-## Технологии:
+## Stack:
 
 1. React
 2. Redux
@@ -13,5 +13,5 @@
 4. Formik, Yup
 5. SCSS
 
-## Деплой - Firebase
-https://quiz-project-fb1e2.firebaseapp.com
+## Deploy - Firebase
+https://quiz-project-fb1e2.web.app

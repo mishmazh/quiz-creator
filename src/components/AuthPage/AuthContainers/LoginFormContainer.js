@@ -17,10 +17,8 @@ const LoginFormContainer = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Неверный формат")
-      .required("Поле обязательно для заполнения"),
-    password: Yup.string().required("Поле обязательно для заполнения"),
+    email: Yup.string().email("Invalid format").required("Field is required"),
+    password: Yup.string().required("Field is required"),
   });
 
   const onSubmit = (values) => auth(values, true);

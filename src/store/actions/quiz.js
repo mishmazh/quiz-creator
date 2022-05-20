@@ -19,7 +19,7 @@ export const fetchQuizes = () => async (dispatch) => {
     const quizes = [];
 
     Object.keys(response.data).forEach((key, index) => {
-      quizes.push({ id: key, name: `Тест №${index + 1}` });
+      quizes.push({ id: key, name: `Quiz №${index + 1}` });
     });
 
     dispatch(fetchQuizesSuccess(quizes));

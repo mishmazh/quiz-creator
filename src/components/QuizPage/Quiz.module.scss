@@ -5,9 +5,15 @@
   justify-content: center;
   flex-grow: 1;
 
-  .title {
-    padding-bottom: 1em;
-    font-size: 1.5em;
+  .titleBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      padding-bottom: 1em;
+      font-size: 1.5em;
+    }
   }
 
   .quizForm {

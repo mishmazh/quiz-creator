@@ -14,12 +14,10 @@ const RegisterFormContainer = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Неверный формат")
-      .required("Поле обязательно для заполнения"),
+    email: Yup.string().email("Invalid format").required("Field is required"),
     password: Yup.string()
-      .required("Поле обязательно для заполнения")
-      .min(6, "Количество символов должно быть не меньше 6"),
+      .required("Field is required")
+      .min(6, "The number of characters must be at least 6"),
   });
 
   const onSubmit = (values) => auth(values, false);

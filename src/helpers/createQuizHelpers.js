@@ -11,14 +11,14 @@ export const createQuizBtnDisabled = (formControls) => {
 };
 
 const createOptionControl = (number) => ({
-  label: `Вариант ${number}`,
+  label: `Option ${number}`,
   value: "",
   id: number,
 });
 
 export const createFormControls = () => ({
   question: {
-    label: "Вопрос",
+    label: "Question",
     value: "",
   },
   option1: createOptionControl(1),

@@ -20,25 +20,25 @@ const LoginForm = ({
       {({ isSubmitting }) => {
         return (
           <>
-            <div className={classes.title}>Авторизация</div>
+            <div className={classes.title}>Authorization</div>
             <Form className={classes.authForm}>
               <FormInput
                 type="email"
                 name="email"
                 label="Email"
-                placeholder="Введите Email..."
+                placeholder="Enter email..."
               />
               <FormInput
                 type="password"
                 name="password"
-                label="Пароль"
-                placeholder="Введите пароль..."
+                label="Password"
+                placeholder="Enter password..."
               />
 
               {errorMessage && <TextError>{errorMessage}</TextError>}
 
               <Button type="submit" classType="primary" disabled={isSubmitting}>
-                {isSubmitting ? "Загрузка..." : "Войти"}
+                {isSubmitting ? "Loading..." : "Login"}
               </Button>
               <Button
                 type="button"
@@ -46,7 +46,7 @@ const LoginForm = ({
                 classType="success"
                 disabled={isSubmitting}
               >
-                Регистрация
+                Sign Up
               </Button>
             </Form>
           </>

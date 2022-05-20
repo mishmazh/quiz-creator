@@ -22,16 +22,13 @@ const Drawer = ({ onClose, isOpen, isAuth }) => {
     cls.push(classes.close);
   }
 
-  const links = [
-    { to: "/", label: "Домашняя страница" },
-    { to: "/quiz-list", label: "Список тестов" },
-  ];
+  const links = [{ to: "/quiz-list", label: "Quiz list" }];
 
   if (isAuth) {
-    links.push({ to: "/quiz-creator", label: "Создать свой тест" });
-    links.push({ to: "/logout", label: "Выйти" });
+    links.push({ to: "/quiz-creator", label: "Create your quiz" });
+    links.push({ to: "/logout", label: "Logout" });
   } else {
-    links.push({ to: "/", label: "Авторизация" });
+    links.push({ to: "/", label: "Authorization" });
   }
 
   return (

@@ -14,7 +14,7 @@ const initialState = {
   loading: false,
   error: null,
   results: {},
-  answerState: null, // информация о текущем клике пользователя
+  answerState: null,
   activeQuestion: 0,
   isFinished: false,
   quiz: null,

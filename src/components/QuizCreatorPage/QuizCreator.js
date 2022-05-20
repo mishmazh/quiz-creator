@@ -48,7 +48,7 @@ const QuizCreator = () => {
             label={control.label}
             value={control.value}
             placeholder={
-              index === 0 ? "Введите вопрос..." : "Введите вариант ответа..."
+              index === 0 ? "Enter a question..." : "Enter an answer..."
             }
             onChange={(event) =>
               controlOnChangeHandler(event.target.value, controlName)
@@ -65,7 +65,7 @@ const QuizCreator = () => {
 
   const renderSelect = (
     <Select
-      label="Выберите правильный ответ"
+      label="Choose the correct answer"
       value={state.rightAnswerId}
       onChange={selectOnChangeHandler}
       options={[
@@ -115,7 +115,7 @@ const QuizCreator = () => {
 
   return (
     <div className={classes.quizCreator}>
-      <div className={classes.title}>Создание теста</div>
+      <div className={classes.title}>Quiz creator</div>
 
       <form className={classes.quizCreatorForm} onSubmit={submitHandler}>
         {renderControls()}
@@ -126,14 +126,14 @@ const QuizCreator = () => {
           onClick={addQuestionHandler}
           disabled={!createQuizBtnDisabled(state.formControls)}
         >
-          Добавить вопрос
+          Add a question
         </Button>
         <Button
           classType="success"
           onClick={createQuizHandler}
           disabled={quiz.length === 0}
         >
-          Создать тест
+          Create a quiz
         </Button>
       </form>
     </div>

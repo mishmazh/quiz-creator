@@ -26,23 +26,23 @@ const RegisterForm = ({
                 type="email"
                 name="email"
                 label="Email"
-                placeholder="Введите Email..."
+                placeholder="Enter email..."
               />
               <FormInput
                 type="password"
                 name="password"
-                label="Пароль"
-                placeholder="Введите пароль..."
+                label="Password"
+                placeholder="Enter password..."
               />
 
               {errorMessage && <TextError>{errorMessage}</TextError>}
 
               <Button type="submit" classType="primary" disabled={isSubmitting}>
-                {isSubmitting ? "Загрузка..." : "Зарегистрироваться"}
+                {isSubmitting ? "Loading..." : "Register an account"}
               </Button>
 
               <NavLink className={classes.link} to="/">
-                Уже есть учетная запись?
+                Already have an account?
               </NavLink>
             </Form>
           </>

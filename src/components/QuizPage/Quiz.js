@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import classes from "./Quiz.module.scss";
+import s from "./Quiz.module.scss";
 import ActiveQuiz from "./ActiveQuiz/ActiveQuiz";
 import FinishedQuiz from "./FinishedQuiz/FinishedQuiz";
 import Loader from "../UI/Loader/Loader";
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 import { useParams, useNavigate } from "react-router-dom";
+import Icon from "../UI/Icon/Icon";
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Quiz = () => {
   const { results, answerState, activeQuestion, isFinished, quiz, loading } =
@@ -20,12 +22,15 @@ const Quiz = () => {
     return () => retryQuiz();
   }, []);
 
-  const navigateToStart = () => navigate("/quiz-creator");
+  const navigateToQuizCreator = () => navigate("/quiz-creator");
 
   return (
-    <div className={classes.quiz}>
-      <div className={classes.quizForm}>
-        <h1 className={classes.title}>Ответьте на все вопросы</h1>
+    <div className={s.quiz}>
+      <div className={s.quizForm}>
+        <div className={s.titleBlock}>
+          <h1 className={s.title}>Answer the questions</h1>
+          <Icon icon={faAnglesLeft} onClick={() => navigate("/quiz-list")} />
+        </div>
 
         {loading || !quiz ? (
           <Loader />
@@ -34,7 +39,7 @@ const Quiz = () => {
             results={results}
             quiz={quiz}
             retryHandler={retryQuiz}
-            redirectHandler={navigateToStart}
+            redirectHandler={navigateToQuizCreator}
           />
         ) : (
           <ActiveQuiz
