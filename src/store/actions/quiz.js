@@ -1,4 +1,4 @@
-import api from "../../api/api";
+import api from "../../axios/axios";
 import {
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZES_ERROR,

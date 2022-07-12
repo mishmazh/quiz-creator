@@ -1,5 +1,5 @@
 import { CREATE_QUIZ_QUESTION, RESET_QUIZ_CREATION } from "./types";
-import api from "../../api/api";
+import api from "../../axios/axios";
 
 export const createQuizQuestion = (item) => ({
   type: CREATE_QUIZ_QUESTION,

@@ -19,7 +19,7 @@ const LoginForm = ({
     >
       {({ isSubmitting }) => {
         return (
-          <>
+          <div>
             <div className={classes.title}>Authorization</div>
             <Form className={classes.authForm}>
               <FormInput
@@ -49,7 +49,7 @@ const LoginForm = ({
                 Sign Up
               </Button>
             </Form>
-          </>
+          </div>
         );
       }}
     </Formik>

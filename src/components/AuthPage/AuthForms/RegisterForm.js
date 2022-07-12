@@ -19,7 +19,7 @@ const RegisterForm = ({
     >
       {({ isSubmitting }) => {
         return (
-          <>
+          <div>
             <div className={classes.title}>Registration</div>
             <Form className={classes.authForm}>
               <FormInput
@@ -45,7 +45,7 @@ const RegisterForm = ({
                 Already have an account?
               </NavLink>
             </Form>
-          </>
+          </div>
         );
       }}
     </Formik>

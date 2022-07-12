@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.auth-page {
+  display: grid;
+  place-items: center;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  background: -webkit-linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
+  background: linear-gradient(45deg, #040d2c, #462a8b, #c505d6);
+  color: #ffffff;
+  padding: 25px;
+}
+
+.auth-page {
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

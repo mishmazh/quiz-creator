@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import classes from "./Layout.module.scss";
-import MenuToggle from "../../components/Navigation/MenuToggle/MenuToggle";
-import Drawer from "../../components/Navigation/Drawer/Drawer";
+import MenuToggle from "../components/Navigation/MenuToggle/MenuToggle";
+import Drawer from "../components/Navigation/Drawer/Drawer";
 import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
@@ -9,7 +8,7 @@ const Layout = ({ children }) => {
   const { token } = useSelector((state) => state.auth);
 
   return (
-    <div className={classes.Layout}>
+    <div className="layout">
       <MenuToggle onToggle={() => setMenu(!menu)} isOpen={menu} />
       <Drawer onClose={() => setMenu(false)} isOpen={menu} isAuth={token} />
 
