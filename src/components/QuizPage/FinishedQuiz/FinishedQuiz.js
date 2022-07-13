@@ -1,5 +1,4 @@
-import s from "./FinishedQuiz.module.scss";
-import Button from "../../UI/Button/Button";
+import Button from "../../UI/Button";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import Icon from "../../UI/Icon/Icon";
 
@@ -13,11 +12,11 @@ const FinishedQuiz = ({ results, quiz, retryHandler, redirectHandler }) => {
   }, 0);
 
   return (
-    <div className={s.finishedQuiz}>
-      <div className={s.title}>Results:</div>
-      <ul>
+    <div className="finished-quiz">
+      <div className="finished-quiz__title">Results:</div>
+      <ul className="finished-quiz-list">
         {quiz.map((quizItem, index) => (
-          <li className={s.resultsList} key={index}>
+          <li className="finished-quiz-list__item" key={index}>
             {index + 1}.&nbsp; {quizItem.question}
             <Icon
               classType="quizIcon"
@@ -27,19 +26,21 @@ const FinishedQuiz = ({ results, quiz, retryHandler, redirectHandler }) => {
         ))}
       </ul>
 
-      <div className={s.successCount}>
+      <div className="finished-quiz__answers">
         Right answers:{" "}
         <strong>
           {successCount} of {quiz.length}
         </strong>
       </div>
 
-      <Button classType="primary" onClick={retryHandler}>
-        Try again
-      </Button>
-      <Button classType="success" onClick={redirectHandler}>
-        Back to creation
-      </Button>
+      <div className="btns-block">
+        <Button className="btn-primary" onClick={retryHandler}>
+          Try again
+        </Button>
+        <Button className="btn-success" onClick={redirectHandler}>
+          Back to creation
+        </Button>
+      </div>
     </div>
   );
 };

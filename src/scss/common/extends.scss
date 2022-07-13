@@ -2,3 +2,19 @@
   display: grid;
   place-items: center;
 }
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+%form-radius-padding {
+  border-radius: 5px;
+  padding: 15px;
+}
+
+%flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

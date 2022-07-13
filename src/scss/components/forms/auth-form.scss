@@ -1,0 +1,13 @@
+.auth-form {
+  @include form-mixin(650px, 2px, $white);
+  gap: 10px;
+
+  &__link {
+    font-size: 13px;
+    transition-duration: 0.1s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

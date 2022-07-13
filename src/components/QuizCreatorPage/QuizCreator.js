@@ -1,8 +1,7 @@
-import classes from "./QuizCreator.module.scss";
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../../components/UI/Input/Input";
 import Select from "../../components/UI/Select/Select";
-import Button from "../../components/UI/Button/Button";
+import Button from "../UI/Button";
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 import {
@@ -114,27 +113,29 @@ const QuizCreator = () => {
   };
 
   return (
-    <div className={classes.quizCreator}>
-      <div className={classes.title}>Quiz creator</div>
+    <div>
+      <div className="primary-title">Quiz creator</div>
 
-      <form className={classes.quizCreatorForm} onSubmit={submitHandler}>
+      <form className="quiz-creator-form" onSubmit={submitHandler}>
         {renderControls()}
         {renderSelect}
 
-        <Button
-          classType="primary"
-          onClick={addQuestionHandler}
-          disabled={!createQuizBtnDisabled(state.formControls)}
-        >
-          Add a question
-        </Button>
-        <Button
-          classType="success"
-          onClick={createQuizHandler}
-          disabled={quiz.length === 0}
-        >
-          Create a quiz
-        </Button>
+        <div className="btns-block">
+          <Button
+            className="btn-success"
+            onClick={addQuestionHandler}
+            disabled={!createQuizBtnDisabled(state.formControls)}
+          >
+            Add a question
+          </Button>
+          <Button
+            className="btn-primary"
+            onClick={createQuizHandler}
+            disabled={quiz.length === 0}
+          >
+            Create a quiz
+          </Button>
+        </div>
       </form>
     </div>
   );

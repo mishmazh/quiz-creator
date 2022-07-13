@@ -1,3 +1,7 @@
 @import "common";
 @import "components/layout/layout";
-@import "components/auth-page/auth-page";
+@import "components/forms/auth-form";
+@import "components/forms/quiz-creator-form";
+@import "components/forms/quiz-list-form";
+@import "components/forms/active-quiz";
+@import "components/forms/finished-quiz";

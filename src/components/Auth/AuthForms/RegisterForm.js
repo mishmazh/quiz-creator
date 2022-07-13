@@ -1,15 +1,14 @@
-import classes from "./AuthForms.module.scss";
 import FormInput from "../../UI/FormInput/FormInput";
-import Button from "../../UI/Button/Button";
+import Button from "../../UI/Button";
 import { Form, Formik } from "formik";
 import TextError from "../../UI/TextError/TextError";
+import { NavLink } from "react-router-dom";
 
-const LoginForm = ({
+const RegisterForm = ({
   initialValues,
   validationSchema,
   onSubmit,
   errorMessage,
-  redirectHandler,
 }) => {
   return (
     <Formik
@@ -20,8 +19,8 @@ const LoginForm = ({
       {({ isSubmitting }) => {
         return (
           <div>
-            <div className={classes.title}>Authorization</div>
-            <Form className={classes.authForm}>
+            <div className="primary-title">Registration</div>
+            <Form className="auth-form">
               <FormInput
                 type="email"
                 name="email"
@@ -37,17 +36,19 @@ const LoginForm = ({
 
               {errorMessage && <TextError>{errorMessage}</TextError>}
 
-              <Button type="submit" classType="primary" disabled={isSubmitting}>
-                {isSubmitting ? "Loading..." : "Login"}
-              </Button>
-              <Button
-                type="button"
-                onClick={redirectHandler}
-                classType="success"
-                disabled={isSubmitting}
-              >
-                Sign Up
-              </Button>
+              <div className="btns-block">
+                <Button
+                  type="submit"
+                  className="btn-success"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Loading..." : "Register an account"}
+                </Button>
+
+                <NavLink className="auth-form__link" to="/">
+                  Already have an account?
+                </NavLink>
+              </div>
             </Form>
           </div>
         );
@@ -56,4 +57,4 @@ const LoginForm = ({
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

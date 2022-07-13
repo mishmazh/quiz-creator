@@ -1,15 +1,14 @@
-import classes from "./AuthForms.module.scss";
 import FormInput from "../../UI/FormInput/FormInput";
-import Button from "../../UI/Button/Button";
+import Button from "../../UI/Button";
 import { Form, Formik } from "formik";
 import TextError from "../../UI/TextError/TextError";
-import { NavLink } from "react-router-dom";
 
-const RegisterForm = ({
+const LoginForm = ({
   initialValues,
   validationSchema,
   onSubmit,
   errorMessage,
+  redirectHandler,
 }) => {
   return (
     <Formik
@@ -20,8 +19,8 @@ const RegisterForm = ({
       {({ isSubmitting }) => {
         return (
           <div>
-            <div className={classes.title}>Registration</div>
-            <Form className={classes.authForm}>
+            <div className="primary-title">Authorization</div>
+            <Form className="auth-form">
               <FormInput
                 type="email"
                 name="email"
@@ -37,13 +36,23 @@ const RegisterForm = ({
 
               {errorMessage && <TextError>{errorMessage}</TextError>}
 
-              <Button type="submit" classType="primary" disabled={isSubmitting}>
-                {isSubmitting ? "Loading..." : "Register an account"}
-              </Button>
-
-              <NavLink className={classes.link} to="/">
-                Already have an account?
-              </NavLink>
+              <div className="btns-block">
+                <Button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Loading..." : "Login"}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={redirectHandler}
+                  className="btn-success"
+                  disabled={isSubmitting}
+                >
+                  Sign Up
+                </Button>
+              </div>
             </Form>
           </div>
         );
@@ -52,4 +61,4 @@ const RegisterForm = ({
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

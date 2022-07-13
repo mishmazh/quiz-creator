@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "./hoc/Layout";
 import { Navigate, Route, Routes } from "react-router-dom";
 import QuizCreator from "./components/QuizCreatorPage/QuizCreator";
-import QuizList from "./components/QuizListPage/QuizList";
+import QuizListPage from "./pages/QuizListPage";
 import AuthPage from "./pages/AuthPage";
 import Quiz from "./components/QuizPage/Quiz";
 import { useSelector } from "react-redux";
@@ -22,7 +22,7 @@ const App = () => {
     <Routes>
       <Route path="*" element={<AuthPage />} />
       <Route path="/quiz/:id" element={<Quiz />} />
-      <Route path="/quiz-list" element={<QuizList />} />
+      <Route path="/quiz-list" element={<QuizListPage />} />
       <Route path="/quiz-creator" element={<Navigate to="/" />} />
     </Routes>
   );
@@ -32,7 +32,7 @@ const App = () => {
       <Routes>
         <Route path="/quiz-creator" element={<QuizCreator />} />
         <Route path="/quiz/:id" element={<Quiz />} />
-        <Route path="/quiz-list" element={<QuizList />} />
+        <Route path="/quiz-list" element={<QuizListPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<Navigate to="/quiz-creator" />} />
         <Route path="/register" element={<Navigate to="/quiz-creator" />} />

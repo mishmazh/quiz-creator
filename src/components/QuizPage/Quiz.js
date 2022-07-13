@@ -25,12 +25,12 @@ const Quiz = () => {
   const navigateToQuizCreator = () => navigate("/quiz-creator");
 
   return (
-    <div className={s.quiz}>
+    <div>
       <div className={s.quizForm}>
-        <div className={s.titleBlock}>
+        {/* <div className={s.titleBlock}>
           <h1 className={s.title}>Answer the questions</h1>
           <Icon icon={faAnglesLeft} onClick={() => navigate("/quiz-list")} />
-        </div>
+        </div> */}
 
         {loading || !quiz ? (
           <Loader />
@@ -49,6 +49,7 @@ const Quiz = () => {
             answerNumber={activeQuestion + 1}
             onAnswerClickHandler={quizAnswerClick}
             answerState={answerState}
+            navigate={navigate}
           />
         )}
       </div>
