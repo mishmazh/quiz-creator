@@ -1,6 +1,5 @@
-import React from "react";
 import classes from "./Drawer.module.scss";
-import Backdrop from "../../UI/Backdrop/Backdrop";
+import Backdrop from "../../UI/Backdrop";
 import { NavLink } from "react-router-dom";
 
 const Drawer = ({ onClose, isOpen, isAuth }) => {

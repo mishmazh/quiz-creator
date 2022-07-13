@@ -110,26 +110,6 @@ body {
   text-align: center;
 }
 
-.btn {
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 0.9em;
-  transition: opacity 0.3s;
-  color: #ffffff;
-}
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.btn-primary {
-  background-color: #2884f6;
-}
-
-.btn-success {
-  background-color: rgba(161, 240, 69, 0.7);
-}
-
 .btns-block {
   display: flex;
   align-items: center;
@@ -233,6 +213,36 @@ body {
 }
 .finished-quiz__answers {
   font-size: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  transition: opacity 0.3s;
+  color: #ffffff;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: #2884f6;
+}
+
+.btn-success {
+  background-color: rgba(161, 240, 69, 0.7);
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 /*# sourceMappingURL=style.css.map */
