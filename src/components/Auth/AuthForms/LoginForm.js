@@ -1,7 +1,7 @@
-import FormInput from "../../UI/FormInput/FormInput";
+import FormInput from "../../UI/FormInput";
 import Button from "../../UI/Button";
 import { Form, Formik } from "formik";
-import TextError from "../../UI/TextError/TextError";
+import TextError from "../../UI/TextError";
 
 const LoginForm = ({
   initialValues,

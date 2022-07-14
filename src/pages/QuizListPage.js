@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Loader from "../components/UI/Loader/Loader";
+import Preloader from "../components/UI/Preloader";
 import { useSelector } from "react-redux";
 import { useActions } from "../hooks/useActions";
 import QuizListItem from "../components/QuizList/QuizListItem";
@@ -13,7 +13,7 @@ const QuizListPage = () => {
   }, []);
 
   const fetchList = () => (
-    <div className="list-block">
+    <div className="quiz-list__items">
       {quizes.map((quiz, index) => (
         <QuizListItem
           quiz={quiz}
@@ -27,10 +27,10 @@ const QuizListPage = () => {
 
   return (
     <div>
-      <div className="quiz-list-form">
-        <div className="quiz-list-form__title">Quiz List</div>
+      <div className="quiz-list">
+        <div className="quiz-list__title">Quiz List</div>
 
-        {loading && quizes.length !== 0 ? <Loader /> : fetchList()}
+        {loading && quizes.length !== 0 ? <Preloader /> : fetchList()}
       </div>
     </div>
   );

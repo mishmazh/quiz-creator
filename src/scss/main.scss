@@ -1,9 +1,4 @@
-@import "common";
-@import "components/layout/layout";
-@import "components/forms/auth-form";
-@import "components/forms/quiz-creator-form";
-@import "components/forms/quiz-list-form";
-@import "components/forms/active-quiz";
-@import "components/forms/finished-quiz";
-@import "components/UI/button";
-@import "components/UI/backdrop";
+@import "base";
+@import "abstracts";
+@import "layouts";
+@import "components";

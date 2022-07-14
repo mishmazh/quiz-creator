@@ -1,0 +1,11 @@
+.quiz-creator {
+  @include form-mixin(575px, 2px, $white);
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  select {
+    margin-bottom: 10px;
+  }
+}

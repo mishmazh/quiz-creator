@@ -1,0 +1,23 @@
+.finished-quiz {
+  @include form-mixin(550px, 2px, $white);
+  gap: 15px;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  .finished-quiz-list {
+    @extend %flex-col;
+    gap: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+
+    &__item {
+      @extend %flex-between-center;
+    }
+  }
+
+  &__answers {
+    font-size: 15px;
+  }
+}

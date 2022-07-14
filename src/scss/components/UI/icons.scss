@@ -1,0 +1,21 @@
+.primary-icon {
+  font-size: 23px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.quiz-icon {
+  font-size: 1.4em;
+}
+
+.icon-wrong {
+  color: $red;
+}
+
+.icon-success {
+  color: $green;
+}

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Icon from "../UI/Icon/Icon";
+import Icon from "../UI/Icon";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const QuizListItem = ({ quiz, index, deleteQuizById }) => {

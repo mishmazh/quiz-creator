@@ -1,0 +1,7 @@
+@mixin form-mixin($width, $border-size: 0, $border-color: transparent) {
+  width: $width;
+  border: $border-size solid $border-color;
+
+  @extend %form-radius-padding;
+  @extend %flex-col;
+}

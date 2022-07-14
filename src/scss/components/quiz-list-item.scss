@@ -1,0 +1,14 @@
+.quiz-list-item {
+  @extend %flex-between-center;
+  margin-left: 10px;
+  font-size: 16px;
+
+  &__number {
+    transition-duration: 0.22s;
+    transition: opacity 0.22s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
